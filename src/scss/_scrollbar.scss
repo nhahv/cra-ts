@@ -1,0 +1,116 @@
+@use "sass:math";
+
+$scroll-bar-track-width: 4px;
+$scroll-bar-thumb-color: #499cef;
+$scroll-bar-thumb-color-dark: $scroll-bar-thumb-color;
+$scroll-bar-track-color: $gray-400;
+$scroll-bar-track-color-dark: $gray-500;
+
+.scrollbar {
+    overflow: auto;
+}
+
+.scrollbar {
+    //https://www.quackit.com/css/css_scrollbars.cfm
+    //overflow: auto;
+    scrollbar-color: transparent transparent;
+    scrollbar-width: thin;
+
+    &::-webkit-scrollbar {
+        //Là toàn bộ scoolbar
+        &:vertical {
+            //Dọc
+            width: $scroll-bar-track-width;
+        }
+        &:horizontal {
+            //Ngang
+            height: $scroll-bar-track-width;
+        }
+        background-color: inherit;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        border-radius: math.div($scroll-bar-track-width, 2);
+        background: $scroll-bar-thumb-color;
+    }
+
+    &::-webkit-scrollbar-track {
+        //Là đường trượt
+        background: $scroll-bar-track-color;
+        border-radius: math.div($scroll-bar-track-width, 2);
+    }
+
+    &:hover {
+        scrollbar-color: $scroll-bar-thumb-color $scroll-bar-track-color;
+        &::-webkit-scrollbar {
+            border-radius: 4px;
+        }
+        &::-webkit-scrollbar-thumb {
+            background: $scroll-bar-thumb-color;
+        }
+        &::-webkit-scrollbar-track {
+            background: $scroll-bar-track-color;
+        }
+    }
+}
+/*
+ *  STYLE 2
+ */
+
+.scrollbar-dark {
+    //https://www.quackit.com/css/css_scrollbars.cfm
+    overflow: auto;
+    scrollbar-color: transparent transparent;
+    scrollbar-width: thin;
+
+    &::-webkit-scrollbar {
+        //Required to custom
+        //Là toàn bộ scoolbar
+        &:vertical {
+            //Dọc
+            width: $scroll-bar-track-width;
+        }
+        &:horizontal {
+            //Ngang
+            height: $scroll-bar-track-width;
+        }
+        background-color: inherit;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        border-radius: math.div($scroll-bar-track-width, 2);
+        background: $scroll-bar-thumb-color-dark;
+    }
+
+    &::-webkit-scrollbar-track {
+        //Là đường trượt
+        background: $scroll-bar-track-color-dark;
+        border-radius: math.div($scroll-bar-track-width, 2);
+    }
+
+    //
+    //&:hover {
+    //  scrollbar-color: $scroll-bar-thumb-color $scroll-bar-track-color;
+    //  &::-webkit-scrollbar {
+    //    border-radius: 4px;
+    //  }
+    //  &::-webkit-scrollbar-thumb {
+    //    background: $scroll-bar-thumb-color;
+    //  }
+    //  &::-webkit-scrollbar-track {
+    //    //background: $scroll-bar-track-color;
+    //  }
+    //}
+}
+
+.force-overflow {
+    min-height: 450px;
+}
+//https://cssdeck.com/labs/flex1-overflow-scrolling
+
+.flex-scroll {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    box-sizing: border-box;
+}
